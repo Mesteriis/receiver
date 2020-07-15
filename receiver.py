@@ -12,14 +12,11 @@ def bx24(request):
     key = data['auth[application_token]']             # ключ исходящего хука
     lead_id = data['data[FIELDS][ID]']                # id лида, который был обновлен
     response = requests.get('https://<Your_bitrix24_domain_name>/rest/<user_id>/<autorization_code>/crm.lead.get/', {'id': lead_id}) # исходящий хук к обновленному лиду
-    if key=='**********' or key=='**********':        # ключи хуков
-        print()
+    print()
+    if key == '**********':    # ключи хуков
         print(response.json()['result']['STATUS_ID']) # статус обновленного лида
-        print()
     else:
-        print()
         print('Fail!')
-        print()
-
+    print()
     return HttpResponse('success')
 
